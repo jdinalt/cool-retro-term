@@ -47,7 +47,7 @@ QtObject {
     property ListModel windowsModel: ListModel { }
 
     function createWindow() {
-        var window = windowComponent.createObject(null)
+        var window = windowComponent.createObject(appRoot)
         if (!window)
             return
 
