@@ -27,4 +27,33 @@ Alternatively, most distributions such as Ubuntu, Fedora or Arch already package
 
 ## Building
 
-Check out the wiki and follow the instructions on how to build it on [Linux](https://github.com/Swordfish90/cool-retro-term/wiki/Build-Instructions-(Linux)) and [macOS](https://github.com/Swordfish90/cool-retro-term/wiki/Build-Instructions-(macOS)).
+cool-retro-term requires Qt 6.4 or newer, including the Qt Shader Tools (`qsb`) and Qt 5 Compatibility modules.
+
+### Ubuntu 24.04
+
+Install the build and runtime dependencies:
+
+```sh
+sudo apt install build-essential qmake6 qt6-base-dev qt6-base-dev-tools \
+  qt6-declarative-dev qt6-shadertools-dev qt6-5compat-dev libqt6sql6-sqlite \
+  qml6-module-qtquick qml6-module-qtquick-controls qml6-module-qtquick-templates \
+  qml6-module-qtquick-dialogs qml6-module-qtquick-layouts \
+  qml6-module-qtquick-localstorage qml6-module-qtquick-window \
+  qml6-module-qtqml-models qml6-module-qtqml-workerscript \
+  qml6-module-qt5compat-graphicaleffects qml6-module-qtcore
+```
+
+Clone with submodules, then build and run:
+
+```sh
+git clone --recursive https://github.com/jdinalt/cool-retro-term.git
+cd cool-retro-term
+qmake6 && make -j$(nproc)
+./cool-retro-term
+```
+
+Use `qmake6`, not `qmake`: on Ubuntu, `qmake` is Qt 5. If the tree was ever configured with Qt 5, delete the generated `Makefile`s (`git clean -fdX && git submodule foreach git clean -fdX`) before running `qmake6`, because the subdirectory Makefiles are not regenerated.
+
+### macOS
+
+See the [macOS build instructions](https://github.com/Swordfish90/cool-retro-term/wiki/Build-Instructions-(macOS)).
