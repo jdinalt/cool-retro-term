@@ -182,6 +182,7 @@ ApplicationWindow {
         }
     }
     onClosing: {
+        terminalTabs.closeAllTabs()
         appRoot.closeWindow(terminalWindow)
     }
 }
