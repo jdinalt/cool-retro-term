@@ -63,7 +63,7 @@ MenuBar {
                 }
             }
             onObjectAdded: function(index, object) { profilesMenu.insertItem(index, object) }
-            onObjectRemoved: function(object) { profilesMenu.removeItem(object) }
+            onObjectRemoved: function(index, object) { profilesMenu.removeItem(object) }
         }
     }
     Menu {
